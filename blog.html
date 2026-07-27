@@ -1,292 +1,96 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="olive" data-build="a1b2c3d4">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="bpaas-design-system" content="brutalist-avantgarde">
-    <meta name="bpaas-design-theme" content="kr-neon-void">
-    <title>마포 노래방 정보 | 블로그 - Street Brutalist Guide</title>
-    <meta name="description" content="마포 노래방 업계의 권위 있는 데이터 기반 블로그. 2025년 최신 트렌드, 실제 이용자 통계, 전문가 분석으로 검증된 마포 최고의 노래방 정보를 제공합니다. 전화 문의 010-6279-0862">
-    <meta name="keywords" content="마포 노래방, 마포 노래방 정보, 마포 가성비 노래방, 마포 코인노래방, 마포 노래방 추천, 홍대 노래방, 마포구 노래방, 블로그, 트렌드 분석">
-    <link rel="canonical" href="https://t3b06-mp-kb-info.vercel.app/blog">
-    <meta property="og:title" content="마포 노래방 정보 | Street Brutalist Guide - 블로그">
-    <meta property="og:description" content="데이터 기반 마포 노래방 업계 분석. 2025년 트렌드, 실시간 통계, 전문가 인사이트를 제공합니다.">
-    <meta property="og:type" content="article">
-    <style>
-        :root{
-            --bg:#0a0a0a;
-            --surface:#1a1a1a;
-            --text:#e0e0e0;
-            --accent:#ff2a75;
-            --accent2:#00f0ff;
-            --gray:#888;
-            --border:#333;
-            --font:'Pretendard','Noto Sans KR',sans-serif;
-            --shadow-neon:0 0 8px var(--accent),0 0 16px var(--accent);
-            --shadow-neon2:0 0 8px var(--accent2),0 0 16px var(--accent2);
-        }
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth}
-        body{
-            background:var(--bg);
-            color:var(--text);
-            font-family:var(--font);
-            line-height:1.6;
-            min-height:100vh;
-            display:flex;
-            flex-direction:column;
-        }
-        a{color:var(--accent);text-decoration:none;transition:.2s}
-        a:hover{color:var(--accent2);text-shadow:0 0 4px var(--accent2)}
-        img{max-width:100%;display:block}
-
-        /* 브루탈리스트 타이포그래피 */
-        h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.02em;text-transform:uppercase}
-        h2{font-size:clamp(1.6rem,3vw,2.5rem);font-weight:800;letter-spacing:-0.01em;border-left:6px solid var(--accent);padding-left:1rem;margin:2.5rem 0 1.2rem}
-        h3{font-size:clamp(1.2rem,2vw,1.8rem);font-weight:700;color:var(--accent2)}
-        p{margin-bottom:1.2rem;font-size:1.05rem}
-        .text-muted{color:var(--gray);font-size:0.95rem}
-
-        /* 네비게이션 */
-        .navbar{
-            background:var(--surface);
-            border-bottom:3px solid var(--accent);
-            padding:0 2rem;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            height:64px;
-            position:sticky;
-            top:0;
-            z-index:1000;
-            box-shadow:0 2px 12px rgba(255,42,117,0.15);
-        }
-        .navbar .logo{
-            font-size:1.4rem;
-            font-weight:900;
-            text-transform:uppercase;
-            letter-spacing:0.1em;
-            color:var(--accent);
-            text-shadow:0 0 6px var(--accent);
-        }
-        .navbar .logo:hover{color:var(--accent2);text-shadow:0 0 10px var(--accent2)}
-        .nav-links{
-            display:flex;
-            list-style:none;
-            gap:2rem;
-        }
-        .nav-links a{
-            color:var(--text);
-            font-weight:600;
-            font-size:0.95rem;
-            text-transform:uppercase;
-            letter-spacing:0.05em;
-            padding:0.3rem 0;
-            border-bottom:2px solid transparent;
-        }
-        .nav-links a:hover,.nav-links a.active{
-            border-bottom-color:var(--accent2);
-            color:var(--accent2);
-        }
-
-        /* 햄버거 메뉴 */
-        .hamburger-menu{
-            display:none;
-            flex-direction:column;
-            cursor:pointer;
-            gap:5px;
-            background:none;
-            border:none;
-            padding:8px;
-        }
-        .hamburger-menu span{
-            display:block;
-            width:28px;
-            height:3px;
-            background:var(--text);
-            border-radius:2px;
-            transition:.3s;
-        }
-        .hamburger-menu.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-        .hamburger-menu.active span:nth-child(2){opacity:0}
-        .hamburger-menu.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-
-        @media(max-width:768px){
-            .hamburger-menu{display:flex}
-            .nav-links{
-                position:fixed;
-                top:64px;
-                right:-100%;
-                width:280px;
-                height:100vh;
-                background:var(--surface);
-                flex-direction:column;
-                padding:2rem 1.5rem;
-                gap:1.5rem;
-                border-left:3px solid var(--accent);
-                transition:right .3s ease;
-                box-shadow:-8px 0 20px rgba(0,0,0,0.6);
-                z-index:999;
-            }
-            .nav-links.open{right:0}
-            .nav-links a{font-size:1.1rem}
-        }
-
-        /* 메인 레이아웃 */
-        .container{
-            max-width:1100px;
-            margin:0 auto;
-            padding:2rem 1.5rem;
-            flex:1;
-        }
-
-        /* 블로그 글 카드 */
-        .blog-card{
-            background:var(--surface);
-            border:2px solid var(--border);
-            border-radius:0;
-            padding:2.5rem;
-            margin-bottom:2.5rem;
-            box-shadow:8px 8px 0 var(--accent);
-            transition:.25s;
-        }
-        .blog-card:hover{
-            box-shadow:10px 10px 0 var(--accent2);
-            transform:translate(-2px,-2px);
-        }
-        .blog-card .meta{
-            display:flex;
-            gap:1.5rem;
-            flex-wrap:wrap;
-            margin-bottom:1.8rem;
-            font-size:0.9rem;
-            color:var(--gray);
-        }
-        .blog-card .meta span{border-left:2px solid var(--accent);padding-left:0.8rem}
-        .blog-card .meta span:first-child{border-left:none;padding-left:0}
-
-        .blog-card blockquote{
-            border-left:6px solid var(--accent2);
-            background:rgba(0,240,255,0.05);
-            padding:1rem 1.8rem;
-            margin:1.8rem 0;
-            font-style:italic;
-            color:var(--accent2);
-            font-size:1.1rem;
-        }
-        .blog-card .highlight-box{
-            background:rgba(255,42,117,0.08);
-            border:2px dashed var(--accent);
-            padding:1.5rem;
-            margin:2rem 0;
-            text-align:center;
-        }
-        .blog-card .highlight-box p{font-weight:700;font-size:1.3rem;margin:0}
-
-        /* 데이터 테이블 (간소화) */
-        .data-table{
-            width:100%;
-            border-collapse:collapse;
-            margin:2rem 0;
-            font-size:0.95rem;
-        }
-        .data-table th{
-            background:var(--accent);
-            color:var(--bg);
-            padding:0.7rem 1rem;
-            text-align:left;
-            font-weight:800;
-            text-transform:uppercase;
-        }
-        .data-table td{
-            border-bottom:1px solid var(--border);
-            padding:0.7rem 1rem;
-        }
-        .data-table tr:hover td{background:rgba(255,42,117,0.05)}
-
-        .btn{
-            display:inline-block;
-            background:var(--accent);
-            color:var(--bg);
-            font-weight:800;
-            padding:0.7rem 2rem;
-            text-transform:uppercase;
-            letter-spacing:0.05em;
-            border:none;
-            cursor:pointer;
-            transition:.2s;
-            box-shadow:4px 4px 0 rgba(0,0,0,0.5);
-        }
-        .btn:hover{
-            background:var(--accent2);
-            box-shadow:6px 6px 0 rgba(0,0,0,0.6);
-            transform:translate(-2px,-2px);
-            color:var(--bg);
-        }
-
-        /* 푸터 */
-        footer{
-            background:var(--surface);
-            border-top:3px solid var(--accent);
-            padding:2.5rem 1.5rem;
-            margin-top:auto;
-            text-align:center;
-        }
-        footer .footer-links{
-            display:flex;
-            justify-content:center;
-            gap:2rem;
-            flex-wrap:wrap;
-            margin-bottom:1rem;
-        }
-        footer .footer-links a{color:var(--gray);font-size:0.9rem}
-        footer .footer-links a:hover{color:var(--accent2)}
-        footer p{color:var(--gray);font-size:0.85rem;margin:0}
-
-        @media(max-width:768px){
-            .container{padding:1.2rem}
-            .blog-card{padding:1.5rem}
-            .blog-card .meta{gap:0.8rem}
-            .data-table{font-size:0.8rem}
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>마포 노래방 정보 블로그</title>
+  <meta name="description" content="마포 지역에 위치한 노래방을 선택할 때 확인해야 할 기준, 이용 전 점검 사항, 인원·시간·목적별 적합성 등을 전문가 시각으로 정리했습니다.">
+  <meta name="keywords" content="마포, 노래방, 이용가이드, 선택기준, 확인사항, 이용조건">
+  <link rel="canonical" href="https://t3b06-mp-kb-info.maphoshirts.com/blog.html">
+  <meta property="og:title" content="마포 노래방 정보 — 현장 실사용자를 위한 상세 안내">
+  <meta property="og:description" content="마포 지역 노래방을 선택할 때 필요한 객관적인 기준과 확인 절차를 한눈에 정리했습니다.">
+  <meta property="og:url" content="https://t3b06-mp-kb-info.maphoshirts.com/blog.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://t3b06-mp-kb-info.maphoshirts.com/og-image.jpg">
+  <!-- CSS 파일은 기존 디자인 시스템을 그대로 사용합니다 -->
+  <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <a href="/" class="logo">MAPO-KB</a>
-            <button class="hamburger-menu" aria-label="메뉴 열기" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="/">홈</a></li>
-                <li><a href="/info">정보</a></li>
-                <li><a href="/blog" class="active">블로그</a></li>
-                <li><a href="/contact">문의</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="container">
+    <nav class="nav-present">
+      <ul>
+        <li><a href="/index.html">홈</a></li>
+        <li><a href="/about.html">소개</a></li>
+        <li><a href="/blog.html">블로그</a></li>
+        <li><a href="/contact.html">연락처</a></li>
+      </ul>
+      <div class="hamburger-menu">☰</div>
+    </nav>
+  </header>
 
-    <main class="container">
-        <article class="blog-card">
-            <h1>마포 노래방, 데이터로 말하다: 2025년 업계 트렌드 분석</h1>
-            <div class="meta">
-                <span>2025-06-18</span>
-                <span>카테고리: 트렌드 분석</span>
-                <span>조회수: 2,341</span>
-            </div>
+  <main class="container">
+    <section class="q-img-s5j3">
+      <h1>마포 노래방 선택 가이드</h1>
+      <p>전문가가 정리한 마포 지역 노래방 이용 전 점검 체크리스트와 인원·시간·목적별 최적화 방안을 한 눈에 확인하세요.</p>
+    </section>
 
-            <p><strong>서울 마포구 노래방 업계는 2025년 들어 구조적 전환점을 맞았다.</strong> 본지는 마포구 내 47개 주요 노래방의 월간 운영 데이터, 1,200명 이상의 이용자 설문, 그리고 업계 전문가 인터뷰를 종합 분석하여 객관적인 인사이트를 도출했다. 이 글은 단순한 추천을 넘어, 수치와 근거로 검증된 마포 노래방 시장의 현재와 미래를 조명한다.</p>
+    <section>
+      <h2 class="k-top-1qt3-heading">노래방 선택 시 꼭 고려해야 할 핵심 항목</h2>
+      <div class="n-body-hanl">
+        <p>노래방을 예약하기 전에는 시설 규모, 방음 설비, 곡 업데이트 주기 등을 종합적으로 검토해야 합니다. 특히 마포와 같이 다양한 문화 공간이 밀집된 지역에서는 접근성 및 주변 환경도 중요한 판단 요소가 됩니다.</p>
+        <p>각 항목은 실제 이용 경험을 근거로 객관적인 기준을 설정했으며, 데이터 기반 비교를 통해 최적의 선택을 지원합니다.</p>
+      </div>
 
-            <h2>이용량 데이터: 주간 패턴의 재편</h2>
-            <p>2025년 1분기 대비 2분기 마포 노래방 방문객 데이터를 분석한 결과, 주 이용 시간대가 기존 오후 9시~11시에서 <strong>오후 6시~9시로 2시간 앞당겨진</strong> 것으로 나타났다. 원격 근무의 정착과 홍대 상권의 주간 활동 증가가 주요 요인으로 분석된다. 또한 주말(금~토) 집중도는 전년 대비 12% 완화되었으며, 평일 저녁 시간대 이용률이 23% 상승했다.</p>
+      <ul class="t-list-lxey">
+        <li>방 크기와 수용 가능 인원</li>
+        <li>곡 업데이트 주기 및 최신 차트 반영 정도</li>
+        <li>음향 설비와 방음 처리 수준</li>
+        <li>가격 정책 및 할인 혜택</li>
+        <li>주변 교통 편의성 및 주차 가능 여부</li>
+        <li>청결 상태와 위생 관리 수준</li>
+      </ul>
+    </section>
 
-            <div class="highlight-box">
-                <p>📊 주말 예약 대기 시간 평균 18분 → 14분 (22% 감소)</p>
-                <p style="font-size:0.95rem;margin-top:0.3rem;font-weight:400;">출처: 마포노래방협회 2025 상반기 보고서</p>
-            </div>
+    <section>
+      <h2 class="k-top-1qt3-heading">인원·시점·목적별 맞춤 활용 방안</h2>
+      <div class="n-body-hanl">
+        <p><strong>소규모 그룹(2~4인)</strong>은 개인 방이 아닌 작은 파티룸을 활용하면 비용 효율이 크게 증가합니다. 이 경우 방음이 잘 되는 방을 선택하고, 최소 시간 단위 요금제를 적용받는 것이 현명합니다.</p>
+        <p><strong>대규모 모임(10인 이상)</strong>은 대형 룸을 사전 예약하고, 음향 담당자를 별도로 배치하는 것을 권장합니다. 특히 주말 저녁에는 예약 경쟁이 심하므로 최소 48시간 전 예약을 권합니다.</p>
+      </div>
+      <div class="n-body-hanl">
+        <p><strong>특정 목적(생일 파티, 기업 워크숍, 연습 세션)</strong>에 맞춰 공간을 커스텀할 수 있는 옵션을 제공하는 곳이 있습니다. 이때는 기본 요금 외에 추가 장비(마이크, 스피커, 조명) 대여 비용을 사전에 확인해야 합니다.</p>
+        <p><strong>시간대 선택</strong>은 비용 절감에 직접적인 영향을 줍니다. 평일 낮 시간대는 할인율이 높으며, 야간에는 추가 요금이 발생할 수 있습니다. 이용 목적에 맞는 최적 시간대를 미리 계획해 두면 예산 관리가 용이합니다.</p>
+      </div>
+    </section>
 
-            <h2>가격 민감도와 프리미엄 선택의 양극화</h2>
-            <p>설문 응답자의 64%가 '가격보다 음향 및 시설 퀄리티를 우선시한다'고 답했다. 특히 <strong>20대 후반~30대 초반</strong> 세대에서 프리미엄 룸(시간당 30,000원 이상) 선택 비율이 전년 대비 31% 증가했다. 반면, 10대와 20대 초반은 코인노래방 이용이 18% 늘어나
+    <section>
+      <h2 class="k-top-1qt3-heading">FAQ – 자주 묻는 질문</h2>
+      <table class="m-btn-pver">
+        <tr>
+          <th>질문</th>
+          <th>답변</th>
+        </tr>
+        <tr>
+          <td>예약 시 선결제는 반드시 해야 하나요?</td>
+          <td>대부분의 노래방은 예약 시 선결제를 요구합니다. 이는 예약 부도율을 낮추고, 이용 당일 결제 절차를 간소화하기 위함입니다.</td>
+        </tr>
+        <tr>
+          <td>노래방 내 음량 제한은 어떻게 확인할 수 있나요?</td>
+          <td>음량 제한은 각 방마다 다르며, 입구에 설치된 디지털 표시판을 통해 실시간으로 확인할 수 있습니다. 또한 직원에게 직접 문의하면 정확한 수치를 전달받을 수 있습니다.</td>
+        </tr>
+        <tr>
+          <td>노래방 내부 촬영이 가능한가요?</td>
+          <td>일반적으로 개인 촬영은 허용되지만, 상업적 목적의 영상 촬영은 사전 허가가 필요합니다. 촬영 전 직원에게 확인하는 것이 안전합니다.</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="n-btn-9ebz">
+      <a href="/contact.html">문의 및 예약 상담 바로가기</a>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>© 2026 마포 노래방 정보. 모든 권리 보유.</p>
+  </footer>
 </body>
 </html>
