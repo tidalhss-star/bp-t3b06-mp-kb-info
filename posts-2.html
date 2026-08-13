@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (2/2) · t3b06-mp-kb-info</title>
+  <meta name="description" content="t3b06-mp-kb-info에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://t3b06-mp-kb-info.maphoshirts.com/posts-2.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ 
+ :root {
+ --bg-dark: #0b132b;
+ --bg-card: rgba(255, 255, 255, 0.03);
+ --border-color: rgba(255, 255, 255, 0.08);
+ --primary-neon: #1c2541;
+ --accent-neon: #38bdf8;
+ --text-main: #f4f4f5;
+ --text-muted: #a1a1aa;
+ }
+ 
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ 
+ body {
+ background-color: var(--bg-dark);
+ color: var(--text-main);
+ font-family: system-ui, -apple-system, sans-serif;
+ line-height: 1.7;
+ overflow-x: hidden;
+ }
+ 
+ .glow-header {
+ background: rgba(0, 0, 0, 0.6);
+ backdrop-filter: blur(12px);
+ border-bottom: 1px solid var(--border-color);
+ position: sticky;
+ top: 0;
+ z-index: 100;
+ }
+ 
+ .nav-container {
+ max-width: 1100px;
+ margin: 0 auto;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 18px 20px;
+ }
+ 
+ .logo-glow {
+ font-size: 1.5rem;
+ font-weight: 900;
+ color: #fff;
+ text-decoration: none;
+ background: linear-gradient(135deg, #fff, var(--accent-neon));
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+ }
+ 
+ .nav-links a {
+ color: var(--text-muted);
+ text-decoration: none;
+ margin-left: 28px;
+ font-size: 0.98rem;
+ font-weight: 700;
+ transition: color 0.3s, text-shadow 0.3s;
+ }
+ 
+ .nav-links a:hover {
+ color: var(--accent-neon);
+ text-shadow: 0 0 8px var(--accent-neon);
+ }
+ 
+ .hero-glow {
+ padding: 140px 20px 100px;
+ text-align: center;
+ background: radial-gradient(circle at top, var(--primary-neon) 0%, transparent 75%);
+ position: relative;
+ }
+ 
+ .hero-glow h1 {
+ font-size: 3.2rem;
+ font-weight: 900;
+ margin-bottom: 24px;
+ letter-spacing: -0.06em;
+ line-height: 1.25;
+ }
+ 
+ .gradient-txt {
+ background: linear-gradient(135deg, #fff, var(--accent-neon));
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+ }
+ 
+ .hero-glow p {
+ font-size: 1.25rem;
+ color: var(--text-muted);
+ max-width: 750px;
+ margin: 0 auto 35px;
+ }
+ 
+ .phone-bar {
+ background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+ padding: 18px;
+ border-top: 1px solid var(--border-color);
+ border-bottom: 1px solid var(--border-color);
+ border-radius: 8px;
+ margin: 25px auto;
+ max-width: 600px;
+ font-size: 1.4rem;
+ font-weight: 900;
+ letter-spacing: 0.05em;
+ text-align: center;
+ }
+ 
+ .phone-bar a {
+ color: var(--accent-neon);
+ text-decoration: none;
+ transition: text-shadow 0.3s;
+ }
+ 
+ .phone-bar a:hover {
+ text-shadow: 0 0 10px var(--accent-neon);
+ }
+ 
+ .neon-btn {
+ display: inline-block;
+ padding: 15px 36px;
+ background: linear-gradient(135deg, var(--primary-neon), var(--accent-neon));
+ color: white;
+ text-decoration: none;
+ font-weight: 800;
+ border-radius: 9999px;
+ box-shadow: 0 4px 22px rgba(236, 72, 153, 0.35);
+ transition: all 0.3s ease;
+ letter-spacing: 0.03em;
+ }
+ 
+ .neon-btn:hover {
+ transform: translateY(-2px);
+ box-shadow: 0 8px 30px rgba(236, 72, 153, 0.65);
+ }
+ 
+ .sec-wrap {
+ max-width: 950px;
+ margin: 0 auto;
+ padding: 60px 20px;
+ }
+ 
+ .glass-box {
+ background: var(--bg-card);
+ border: 1px solid var(--border-color);
+ border-radius: 24px;
+ padding: 45px;
+ backdrop-filter: blur(10px);
+ margin-bottom: 45px;
+ box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+ }
+ 
+ .glass-box h2 {
+ font-size: 2.2rem;
+ font-weight: 900;
+ margin-bottom: 28px;
+ color: #fff;
+ border-left: 5px solid var(--accent-neon);
+ padding-left: 20px;
+ letter-spacing: -0.04em;
+ }
+ 
+ .glass-box p {
+ font-size: 1.1rem;
+ color: var(--text-muted);
+ margin-bottom: 24px;
+ text-align: justify;
+ }
+ 
+ .grid-container {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+ gap: 28px;
+ margin-top: 36px;
+ }
+ 
+ .mini-card {
+ background: rgba(255, 255, 255, 0.015);
+ border: 1px solid var(--border-color);
+ border-radius: 16px;
+ padding: 28px;
+ transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+ }
+ 
+ .mini-card:hover {
+ border-color: var(--accent-neon);
+ transform: translateY(-3px);
+ box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+ }
+ 
+ .mini-card h3 {
+ font-size: 1.3rem;
+ font-weight: 800;
+ color: #fff;
+ margin-bottom: 14px;
+ letter-spacing: -0.02em;
+ }
+ 
+ .mini-card p {
+ font-size: 0.98rem;
+ color: var(--text-muted);
+ margin-bottom: 0;
+ }
+ 
+ .premium-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 30px 0;
+ color: var(--text-main);
+ }
+ 
+ .premium-table th {
+ background: rgba(255,255,255,0.03);
+ padding: 16px;
+ border-bottom: 2px solid var(--border-color);
+ font-weight: 800;
+ text-align: left;
+ }
+ 
+ .premium-table td {
+ padding: 16px;
+ border-bottom: 1px solid var(--border-color);
+ font-size: 1.05rem;
+ }
+ 
+ .premium-table tbody tr:hover {
+ background: rgba(255,255,255,0.01);
+ }
+ 
+ .ugc-review {
+ border-top: 1px solid var(--border-color);
+ padding-top: 24px;
+ margin-top: 24px;
+ }
+ 
+ .reviewer-meta {
+ display: flex;
+ justify-content: space-between;
+ font-size: 0.88rem;
+ color: var(--accent-neon);
+ margin-bottom: 10px;
+ font-weight: 700;
+ }
+ 
+ .reviewer-text {
+ font-size: 1.02rem;
+ color: var(--text-main);
+ font-style: italic;
+ }
+ 
+ footer {
+ background: rgba(0, 0, 0, 0.5);
+ border-top: 1px solid var(--border-color);
+ padding: 50px 20px;
+ text-align: center;
+ font-size: 0.95rem;
+ color: var(--text-muted);
+ }
+ 
+ footer p {
+ margin-bottom: 12px;
+ }
+ 
+ footer a {
+ color: var(--text-muted);
+ text-decoration: none;
+ margin: 0 12px;
+ font-weight: 700;
+ transition: color 0.3s;
+ }
+ 
+ footer a:hover {
+ color: var(--accent-neon);
+ }
+ 
+ @media(max-width: 768px) {
+ .hero-glow h1 {
+ font-size: 2.3rem;
+ }
+ .nav-links {
+ display: none;
+ }
+ .glass-box {
+ padding: 28px;
+ }
+ .premium-table {
+ font-size: 0.9rem;
+ }
+ }
+ 
+ </style>
+  <meta property="og:title" content="글 목록 (2/2) · t3b06-mp-kb-info">
+  <meta property="og:description" content="t3b06-mp-kb-info에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://t3b06-mp-kb-info.maphoshirts.com/posts-2.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header class="glow-header">
+ <div class="nav-container">
+ <a href="index.html" class="logo-glow">마포 노래방 포털</a>
+ <nav class="nav-links">
+ <a href="index.html">홈</a>
+ <a href="about.html">상세정보</a>
+ <a href="blog.html">블로그</a>
+ </nav>
+ </div>
+ </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 39개 · 2/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0109.html">마포 노래방 정보 확인을 통한 현명한 홍대 로컬 럭셔리 밤문화 가이드 전략</a>
+        <p class="post-item__summary">마포 노래방 정보를 탐색하는 과정은 단순한 장소 찾기를 넘어 밤문화를 즐기기 위한 첫걸음입니다. 홍대 인근에서 신뢰할 수 있는 업소를 선별하기 위해서는 체계적인 접근 단계가 필요합니다. 우선 자신의</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0089.html">마포 노래방 정보 확인하고 합정 노래방 추천정보 찾아보기</a>
+        <p class="post-item__summary">오랜만에 만난 친구들과 합정역 인근에서 저녁 식사를 마치고 자연스럽게 노래를 부를 장소를 찾는 경우가 많습니다. 막상 거리를 걷다 보면 수많은 간판 속에 어떤 곳을 선택해야 할지 고민이 깊어지기 마</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0090.html">마포 노래방 정보 대신 연남 클럽 추천정보 확인하기</a>
+        <p class="post-item__summary">많은 이들이 연남동 지역을 그저 조용한 카페 거리로만 오해하곤 합니다. 하지만 마포 노래방 정보 검색을 하는 이들도 점차 역동적인 밤문화를 찾기 위해 이동하는 흐름이 포착됩니다. 클럽이라는 공간이 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0091.html">마포 노래방 정보 찾다가 합정 셔츠룸 추천정보 알기</a>
+        <p class="post-item__summary">프라이빗한 공간에서 노래와 대화를 동시에 즐길 수 있는 셔츠룸은 최근 많은 관심을 받고 있습니다. 마포 노래방 정보 검색 중에도 이러한 특수 형태의 공간에 대해 문의하는 이용자들이 늘고 있습니다. </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0092.html">마포 노래방 정보 보며 공덕 가라오케 추천정보 분석</a>
+        <p class="post-item__summary">여러분은 평소에 가라오케를 선택할 때 어떤 점을 가장 중요하게 고려하시나요? 마포 노래방 정보 관련 키워드를 찾아보는 분들이 공덕역 주변에서 비슷한 고민을 나누곤 합니다. 업체마다 제공하는 서비스의</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0093.html">마포 노래방 정보 확인 후 현명하게 선택하는 상수 마사지 추천정보</a>
+        <p class="post-item__summary">상수 지역에서 피로를 풀기 위해 마사지 숍을 찾는 과정은 마포 노래방 정보 검색과 비슷한 신중함을 요구합니다. 단순히 눈에 보이는 광고에 의존하기보다는 체계적인 확인 절차를 거치는 것이 무엇보다 중</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0094.html">마포 노래방 정보 대조를 통해 결정하는 망원 노래방 추천정보</a>
+        <p class="post-item__summary">망원 지역에서 적절한 장소를 고를 때 마포 노래방 정보 습득은 필수적인 기초 과정입니다. 이용객들은 보통 가성비 위주의 매장과 시설 중심의 매장이라는 두 가지 선택지를 마주하게 됩니다. 각 유형이 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0095.html">마포 노래방 정보 활용 실패를 방지하는 홍대 노래방 추천정보</a>
+        <p class="post-item__summary">홍대 일대에서 마포 노래방 정보 검색에 의존하다 보면 종종 낭패를 보는 경우가 발생합니다. 가장 흔한 실패 지점은 무분별한 광고성 정보를 실제 매장의 서비스 품질과 동일시하는 것입니다. 온라인 정보</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0096.html">마포 노래방 정보 체크리스트로 확인하는 공덕 셔츠룸 추천정보</a>
+        <p class="post-item__summary">공덕 지역에서 신뢰할 수 있는 셔츠룸을 찾기 위해서는 마포 노래방 정보 관련 데이터를 기반으로 한 체크리스트가 필요합니다. 우선 매장의 위치와 접근성을 최우선 항목으로 두어야 합니다. 대중교통 이용</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0097.html">마포 노래방 정보 확인하고 안전하게 즐기는 연남 유흥 추천정보</a>
+        <p class="post-item__summary">지인들과 저녁 식사를 마친 후 가벼운 마음으로 연남동 인근의 유흥 시설을 찾던 A씨는 입구에서 당황스러운 상황을 마주했습니다. 사전에 마포 노래방 정보를 제대로 확인하지 않은 탓에 업소의 운영 방식</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0098.html">마포 노래방 정보 믿지 말고 마곡 가라오케 추천정보 찾는 법</a>
+        <p class="post-item__summary">많은 이들이 인터넷상에 떠도는 마포 노래방 정보를 그대로 신뢰하며 마곡 지역의 가라오케까지 동일한 기준을 적용하곤 합니다. 하지만 이는 지역적 특성과 서비스 체계가 완전히 다른 점을 간과한 매우 잘</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0099.html">마포 노래방 정보 바탕으로 구성하는 마곡 유흥 추천정보 가이드</a>
+        <p class="post-item__summary">성공적인 밤 문화를 위해 충족되어야 할 조건은 매우 명확합니다. 청결한 시설 환경, 투명한 가격 체계, 그리고 신속한 서비스 응대가 그 핵심이라 할 수 있습니다. 마포 노래방 정보를 기준으로 유추해</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-1.html">마포 노래방 정보 안내</a>
+        <p class="post-item__summary">마포 지역에 위치한 노래방 이용을 계획 중이라면, 사전에 다양한 정보를 숙지하는 것이 필요합니다. 노래방 선택 시 고려해야 할 요소는 다양하며, 실내 환경, 사운드 품질, 그리고 편의시설 등이 주요</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-2.html">마포 노래방 정보</a>
+        <p class="post-item__summary">마포 지역에는 다양한 노래방 업소들이 위치해 있습니다. 노래방을 이용하려 할 때는 지역의 특성에 맞는 시설을 선택하는 것이 중요합니다. 마포는 문화 시설이 많아 방문객들이 많으며, 이에 따라 노래방</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-1.html">마포 노래방 정보 안내</a>
+        <p class="post-item__summary">마포 지역에서 노래방을 이용하고자 할 때는 다양한 정보를 충분히 파악하는 것이 중요합니다. 지역의 특색에 맞는 공간을 선정하고, 이용 목적에 부합하는 환경을 선택하는 과정이 필요합니다. 노래방은 단</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-2.html">마포 노래방 정보</a>
+        <p class="post-item__summary">노래방을 방문하기 전에는 방문 전 준비 목록을 꼼꼼히 점검하는 것이 좋습니다. 특히 단체 이용 시 인원 수와 좌석 배치 가능성을 미리 파악해야 하며, 일부 공간은 예약제로 운영될 수 있으므로 사전 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-3.html">마포 노래방 정보</a>
+        <p class="post-item__summary">마포 지역에는 노래방이 많이 자리 잡고 있으며, 친구나 동료와 함께 즐기는 인기 있는 여가 활동으로 알려져 있습니다. 노래방은 합법적인 유흥 시설로서, 예약 절차를 거쳐 이용하면 큰 무리 없이 시간</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-002-1hohpmq.html">마포 노래방 정보 솔직 후기</a>
+        <p class="post-item__summary">아, 진짜... 이번 글에서는 보드게임 희귀 에디션의 특정 2인 전략 게임 '테라포밍 마스'가 비너스 확장을 적용했을 때 어떻게 게임 밸런스에 영향을 미치는지 분석해 볼까 합니다. 이 게임에서는 보</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/t3link-001-1hohpmq.html">마포 노래방 가성비 있게 이용하는 법</a>
+        <p class="post-item__summary">시간당 요금 아까우면 패키지 상품부터 확인해라. 단품으로 결제하는 것보다 묶음 상품이 무조건 싸다. 마포 쪽은 유동 인구가 많아서 시간대별로 가격 차이가 심한 편이다. 평일 낮 시간대는 비교적 널널</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <span class="pager__current">2</span>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
