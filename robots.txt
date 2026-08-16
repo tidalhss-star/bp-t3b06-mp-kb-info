@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://t3b06-mp-kb-info.maphoshirts.com/sitemap.xml
-Sitemap: https://t3b06-mp-kb-info.maphoshirts.com/sitemap-pages.xml
+Sitemap: https://mapo-room-song.maphoshirts.com/sitemap.xml
+Sitemap: https://mapo-room-song.maphoshirts.com/sitemap-pages.xml
